@@ -10,18 +10,18 @@ import static com.codeborne.selenide.Selenide.open;
 public class OrderingCardTest {
 
     @Test
-    void shouldValidTest
+    void shouldValidTest() {
+        open("http://localhost:9999");
 
-    {
-        open(" http://0.0.0.0:9999");
-        SelenideElement from = $(".from");
-        from.$("[data-test-id=name] input").setValue("Василий Теркин");
-        from.$("[data-test-id=phone] input").setValue("+79270000000");
-        from.$("[data-test-id=agreement]").click();
-        from.$("[button__text]").click();
+        SelenideElement form = $(".form");
+        form.$("[data-test-id=name] input").setValue("Василий Теркин");
+        form.$("[data-test-id=phone] input").setValue("+79270000000");
+        form.$("[data-test-id=agreement]").click();
+        form.$(".button__text").click();
         $("[data-test-id=order-success]").shouldHave(exactText("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
-
-
     }
 
+
 }
+
+
